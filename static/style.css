@@ -1,0 +1,265 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY WITH IMAGE + LIGHT THEME */
+body {
+    font-family: 'Segoe UI', sans-serif;
+
+    background:
+        linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)),
+        url("https://images.unsplash.com/photo-1554224155-8d04cb21cd6c");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    color: #333;
+    text-align: center;
+    min-height: 100vh;
+
+    animation: fadeIn 1s ease-in;
+}
+
+/* FADE ANIMATION */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* TITLE */
+h1 {
+    margin: 20px 0;
+    color: #f4f2f2;
+    position:relative;
+    
+    
+}
+#finance{
+    color:rgb(61, 75, 120);
+    font-weight:800;
+    position:absolute;
+    top:57px;
+    left:41%;
+    margin-top:10px;
+    
+}
+
+/* GLASS CARD */
+.form, ul, #insight {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    margin: 20px auto;
+    margin-top:55px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* INPUTS */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: linear-gradient(45deg, #3873a7, #1a767a);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* LIST */
+ul {
+    list-style: none;
+}
+
+/* TRANSACTION CARD */
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    margin: 8px 0;
+    background: linear-gradient(45deg, #3873a7, #1a767a);
+    border-radius: 10px;
+}
+
+/* DELETE BUTTON */
+li button {
+    background: red;
+    padding: 5px 8px;
+    border-radius: 5px;
+    width:10%;
+    height:20%;
+}
+
+/* INSIGHT */
+#insight {
+    font-weight: bold;
+}
+
+/* LINKS */
+a {
+    color: rgb(61,75,120);
+    display: inline-block;
+    margin-top: 15px;
+    font-weight:1000;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+/* ONLY center login & register pages */
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* FORM BOX */
+.auth-page form {
+    width: 90%;
+    max-width: 350px;
+
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.login1{
+    position:relative;
+    top:-135px;
+    left:17%;
+}
+.links{
+    position:relative;
+    right:18%;
+    bottom:-125px;
+}
+.register{
+    position:relative;
+    right:100px;
+    bottom:-125px;
+}
+/* TOGGLE BUTTON */
+#themeToggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;   /* 👈 top RIGHT */
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+
+    border: none;
+    border-radius: 10px;   /* square with soft corners */
+
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(5px);
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    z-index: 1000;
+}
+
+/* 🌙 DARK MODE */
+.dark-mode {
+    background:
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url("/static/back_image.jpeg");
+
+    color: #fff;
+}
+
+/* DARK CARD */
+.dark-mode .login-container,
+.dark-mode .form,
+.dark-mode ul,
+.dark-mode #insight {
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+}
+
+/* DARK INPUTS */
+.dark-mode input,
+.dark-mode select {
+    background: #222;
+    color: #fff;
+    border: 1px solid #555;
+}
+#balance {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom:25px;
+    
+}
+
+/* Profit */
+.balance-positive {
+    color: green;
+}
+
+/* Loss */
+.balance-negative {
+    color: red;
+}
+#monthlyReport div {
+    background: rgba(255,255,255,0.1);
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+
+}
+#limit{
+    width:85%;
+    position:relative;
+    left:-7%;
+
+}
+
+#buttonlimit{
+    width: 60px;
+    height: 40px;
+    position:absolute;
+    top:54%;
+    left:85%;
+    font-size:small;
+    
+   
+
+}

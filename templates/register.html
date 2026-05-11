@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="auth-page">
+<button id="themeToggle">🌙</button>
+<script>
+const toggleBtn = document.getElementById("themeToggle");
+
+// Load saved theme
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    toggleBtn.innerText = "☀️";
+}
+
+toggleBtn.onclick = () => {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+        toggleBtn.innerText = "☀️";
+    } else {
+        localStorage.setItem("theme", "light");
+        toggleBtn.innerText = "🌙";
+    }
+};
+</script>
+
+<h2 class="login1">Register</h2>
+
+<form action="/register" method="POST">
+    <input type="text" name="username" placeholder="Create Username" required>
+    <input type="password" name="password" placeholder="Create Password" required>
+    <button type="submit">Register</button>
+</form>
+
+<p class="register">Already have account? <a href="/login" >Login</a></p>
+
+</body>
+</html>
