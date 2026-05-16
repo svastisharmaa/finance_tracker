@@ -189,6 +189,71 @@ async function loadMonthly() {
         container.appendChild(div);
     }
 }
+    // OPEN/CLOSE CHATBOX
+
+function toggleChat(){
+
+    let chat = document.getElementById("chatContainer");
+
+    if(chat.style.display === "flex"){
+
+        chat.style.display = "none";
+
+    }else{
+
+        chat.style.display = "flex";
+    }
+}
+
+// SEND MESSAGE
+
+async function sendMessage(){
+
+    let input = document.getElementById("userInput");
+
+    let message = input.value;
+
+    if(message.trim() === "") return;
+
+    let chatBox = document.getElementById("chatBox");
+
+    // USER MESSAGE
+
+    chatBox.innerHTML += `
+        <div class="message user">
+            ${message}
+        </div>
+    `;
+
+    // SEND TO FLASK
+
+    const res = await fetch("/chat",{
+
+        method:"POST",
+
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body: JSON.stringify({
+            message: message
+        })
+    });
+
+    const data = await res.json();
+
+    // BOT MESSAGE
+
+    chatBox.innerHTML += `
+        <div class="message bot">
+            ${data.reply}
+        </div>
+    `;
+
+    input.value = "";
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
 
 async function deleteTxn(id) {
 
@@ -262,6 +327,31 @@ document
 });
 
 </script>
+    <!-- CHATBOX -->
+
+<div id="chatContainer">
+
+    <div class="chat-header">
+        🤖 AI Advisor
+    </div>
+
+    <div id="chatBox"></div>
+
+    <div class="chat-input-area">
+
+        <input
+            type="text"
+            id="userInput"
+            placeholder="Ask something..."
+        >
+
+        <button onclick="sendMessage()">
+            Send
+        </button>
+
+    </div>
+
+</div>
 
 </body>
 </html>
