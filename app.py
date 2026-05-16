@@ -1,12 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for,jsonify
 import sqlite3
 import os
-from openai import OpenAI
-from flask import request, jsonify
 
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY")
-)
 app = Flask(__name__)
 
 # @app.route('/')
@@ -67,7 +62,7 @@ def login():
             return "Invalid Login ❌"
 
     return render_template("login.html")
-    # AI CHATBOT ROUTE
+# AI CHATBOT ROUTE
 
 @app.route("/chat", methods=["POST"])
 def chat():
@@ -228,33 +223,6 @@ def delete(id):
     conn.close()
 
     return jsonify({"message": "Deleted successfully"})
-    
-@app.route("/chat", methods=["POST"])
-def chat():
-
-    user_message = request.form["message"]
-
-    response = client.chat.completions.create(
-        model="gpt-4.1-mini",
-        messages=[
-            {
-                "role": "system",
-                "content": """
-                You are an AI finance assistant.
-                Help users manage expenses,
-                save money, and analyze spending.
-                """
-            },
-            {
-                "role": "user",
-                "content": user_message
-            }
-        ]
-    )
-
-    reply = response.choices[0].message.content
-
-    return jsonify({"reply": reply})
 
 # Dashboard
 @app.route("/dashboard")
