@@ -67,6 +67,36 @@ def login():
             return "Invalid Login ❌"
 
     return render_template("login.html")
+    # AI CHATBOT ROUTE
+
+@app.route("/chat", methods=["POST"])
+def chat():
+
+    user_message = request.json["message"].lower()
+
+    reply = "I did not understand."
+
+    if "save" in user_message:
+        reply = "Try reducing unnecessary expenses and make a monthly budget."
+
+    elif "food" in user_message:
+        reply = "Your food expenses seem high this month."
+
+    elif "investment" in user_message:
+        reply = "Consider SIPs or long-term investments for better savings."
+
+    elif "expense" in user_message:
+        reply = "Track daily expenses regularly to improve financial control."
+
+    elif "hello" in user_message:
+        reply = "Hello 👋 I am your AI Finance Advisor."
+
+    elif "balance" in user_message:
+        reply = "Maintain a positive balance by reducing unnecessary expenses."
+
+    return jsonify({
+        "reply": reply
+    })
 
 # Register
 @app.route("/register", methods=["GET", "POST"])
