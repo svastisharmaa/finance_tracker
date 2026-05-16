@@ -62,37 +62,58 @@ def login():
             return "Invalid Login ❌"
 
     return render_template("login.html")
-# AI CHATBOT ROUTE
-
 @app.route("/chat", methods=["POST"])
 def chat():
 
-    user_message = request.json["message"].lower()
+    data = request.get_json()
 
-    reply = "I did not understand."
+    user_message = data["message"].lower()
 
-    if "save" in user_message:
-        reply = "Try reducing unnecessary expenses and make a monthly budget."
+    reply = "Sorry, I could not understand that."
 
+    # Greeting
+    if "hello" in user_message or "hi" in user_message:
+        reply = "Hello! I am your AI Finance Advisor."
+
+    # Saving
+    elif "save" in user_message or "saving" in user_message:
+        reply = "Try reducing unnecessary expenses and follow a monthly budget."
+
+    # Food
     elif "food" in user_message:
         reply = "Your food expenses seem high this month."
 
-    elif "investment" in user_message:
-        reply = "Consider SIPs or long-term investments for better savings."
+    # Investment
+    elif "investment" in user_message or "invest" in user_message:
+        reply = "Consider SIPs and long-term investments for better growth."
 
-    elif "expense" in user_message:
-        reply = "Track daily expenses regularly to improve financial control."
+    # Expense
+    elif "expense" in user_message or "spending" in user_message:
+        reply = "Track daily expenses carefully for better financial control."
 
-    elif "hello" in user_message:
-        reply = "Hello 👋 I am your AI Finance Advisor."
-
+    # Balance
     elif "balance" in user_message:
-        reply = "Maintain a positive balance by reducing unnecessary expenses."
+        reply = "Maintain a positive balance by reducing unnecessary spending."
+
+    # Budget
+    elif "budget" in user_message:
+        reply = "Create monthly spending limits for better money management."
+
+    # Shopping
+    elif "shopping" in user_message:
+        reply = "Avoid impulse purchases and compare prices before buying."
+
+    # Loan / EMI
+    elif "loan" in user_message or "emi" in user_message:
+        reply = "Keep EMI payments below 40 percent of monthly income."
+
+    # Emergency
+    elif "emergency" in user_message:
+        reply = "Maintain an emergency fund for unexpected situations."
 
     return jsonify({
         "reply": reply
     })
-
 # Register
 @app.route("/register", methods=["GET", "POST"])
 def register():
